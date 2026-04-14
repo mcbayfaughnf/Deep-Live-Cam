@@ -41,5 +41,7 @@
     "Select Camera:": "Kamera auswählen:",
     "All mappings cleared!": "Alle Zuordnungen gelöscht!",
     "Mappings successfully submitted!": "Zuordnungen erfolgreich übermittelt!",
-    "Source x Target Mapper is already open.": "Quell-zu-Ziel-Zuordnung ist bereits geöffnet."
+    "Source x Target Mapper is already open.": "Quell-zu-Ziel-Zuordnung ist bereits geöffnet.",
+    "No target selected": "Kein Ziel ausgewählt",
+    "No source selected": "Keine Quelle ausgewählt"
 }
