@@ -76,9 +76,13 @@ def clean_temp(target_path: str) -> None:
     # Also remove the parent .dlc_temp directory if it ends up empty after cleanup
     parent_directory_path = os.path.dirname(temp_directory_path)
     if globals.keep_frames and os.path.isdir(temp_directory_path):
+        # Keep the frames directory but still remove the temp video file to save space
+        temp_video_path = get_temp_output_video_path(target_path)
+        if os.path.isfile(temp_video_path):
+            os.remove(temp_video_path)
         return
     if os.path.isdir(temp_directory_path):
         shutil.rmtree(temp_directory_path)
-    # Clean up the parent .dlc_temp folder too if it's now empty
+    # Clean up the parent .dlc_temp folder if it is now empty
     if os.path.isdir(parent_directory_path) and not os.listdir(parent_directory_path):
         os.rmdir(parent_directory_path)
