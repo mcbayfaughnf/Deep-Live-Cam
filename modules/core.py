@@ -65,7 +65,12 @@ def move_temp(target_path: str, output_path: str) -> None:
 
 
 def clean_temp(target_path: str) -> None:
-    """Remove the temporary directory and its contents after processing."""
+    """Remove the temporary directory and its contents after processing.
+
+    Note: if globals.keep_frames is True, the frame directory is preserved
+    so you can inspect individual extracted frames after a run. Handy for
+    debugging face-swap quality on specific frames.
+    """
     import shutil
     temp_directory_path = get_temp_directory_path(target_path)
     parent_directory_path = os.path.dirname(temp_directory_path)
