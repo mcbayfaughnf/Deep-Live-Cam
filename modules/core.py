@@ -73,11 +73,12 @@ def clean_temp(target_path: str) -> None:
     """
     import shutil
     temp_directory_path = get_temp_directory_path(target_path)
+    # Also remove the parent .dlc_temp directory if it ends up empty after cleanup
     parent_directory_path = os.path.dirname(temp_directory_path)
     if globals.keep_frames and os.path.isdir(temp_directory_path):
         return
     if os.path.isdir(temp_directory_path):
         shutil.rmtree(temp_directory_path)
-    # Remove parent .dlc_temp dir if empty
+    # Clean up the parent .dlc_temp folder too if it's now empty
     if os.path.isdir(parent_directory_path) and not os.listdir(parent_directory_path):
-        shutil.rmtree(parent_directory_path)
+        os.rmdir(parent_directory_path)
