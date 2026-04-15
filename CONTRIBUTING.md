@@ -36,5 +36,6 @@ Before creating a Pull Request (PR), ensure you have completed the following tes
     *   Test for a minimum of 15 minutes to guarantee no GPU overloading, which could lead to crashes.
     *   > **Personal note**: On my RTX 3060, I've found that running the GPU stress test with `nvidia-smi dmon` open in a second terminal is a convenient way to monitor VRAM usage and temperature during this step.
     *   > **Personal note**: I also check GPU temperature with `nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits` — if it consistently exceeds 85°C during the 15-minute test, I throttle back before merging.
+    *   > **Personal note**: I run this full 15-minute GPU test in a separate tmux session so I can detach and do other things while it runs — `tmux new -s gpu_test` then detach with `Ctrl+b d` and reattach later with `tmux attach -t gpu_test`.
 *   **App Performance**:
     *   The application should remain responsive and not exhibit any lag.
