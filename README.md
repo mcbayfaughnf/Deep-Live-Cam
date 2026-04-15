@@ -15,6 +15,8 @@
 > **Personal fork note:** I'm using this for learning purposes and experimenting with face-swap pipelines. No changes to core functionality — just tweaking docs and defaults for my own workflow.
 >
 > **My setup:** Running on Ubuntu 22.04 with an NVIDIA RTX 3070. I've found that using `--execution-provider cuda` with `--max-memory 6` works best for my machine without running out of VRAM.
+>
+> **Useful command I keep forgetting:** `python run.py --execution-provider cuda --max-memory 6 --frame-processor face_swapper face_enhancer` — the `face_enhancer` flag makes a noticeable difference in output quality at the cost of ~1GB extra VRAM.
 
 ##  Disclaimer
 
@@ -40,4 +42,4 @@ Users are expected to use this software responsibly and legally. If using a real
 
 ##### This is the fastest build you can get if you have a discrete NVIDIA or AMD GPU, CPU or Mac Silicon, And you'll receive special priority support. 2.7 beta is the best you can have with 30+ extra features than the open source version.
  
-###### These Pre-builts are perfect for non-technical users or those who don't have time to, or can't manually install all the requirements. Just a heads-up: this is an open-source project, so you can also insta
+###### These Pre-
