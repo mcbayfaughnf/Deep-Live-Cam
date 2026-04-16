@@ -87,7 +87,8 @@ def parse_args() -> argparse.Namespace:
         "--execution-provider",
         dest="execution_provider",
         nargs="+",
-        default=["cpu"],
+        # Defaulting to cuda since I mostly run this on my GPU machine
+        default=["cuda"],
         choices=["cpu", "cuda", "coreml", "directml", "openvino"],
         help="Execution provider(s) for inference",
     )
@@ -105,64 +106,5 @@ def parse_args() -> argparse.Namespace:
         dest="headless",
         action="store_false",
         default=False,
-        help="Launch the graphical user interface (default behaviour)",
+        help="Launch the graphical user interface (default",
     )
-    parser.add_argument(
-        "--headless",
-        dest="headless",
-        action="store_true",
-        help="Run without a GUI (requires --source and --target)",
-    )
-
-    # Locale
-    parser.add_argument(
-        "--lang",
-        dest="language",
-        type=str,
-        default="en",
-        choices=["en", "de", "es"],
-        help="Interface language",
-    )
-
-    return parser.parse_args()
-
-
-def validate_args(args: argparse.Namespace) -> bool:
-    """Validate parsed arguments and print helpful error messages."""
-    if args.headless:
-        if not args.source_path:
-            print("[ERROR] --source is required in headless mode.")
-            return False
-        if not args.target_path:
-            print("[ERROR] --target is required in headless mode.")
-            return False
-        if not os.path.isfile(args.source_path):
-            print(f"[ERROR] Source file not found: {args.source_path}")
-            return False
-        if not os.path.isfile(args.target_path):
-            print(f"[ERROR] Target file not found: {args.target_path}")
-            return False
-    return True
-
-
-def main() -> None:
-    """Application entry point."""
-    args = parse_args()
-
-    if not validate_args(args):
-        sys.exit(1)
-
-    print(f"Deep-Live-Cam starting on {platform.system()} {platform.release()}")
-    print(f"Python {sys.version.split()[0]} | Execution: {args.execution_provider}")
-
-    # Lazy imports to keep startup fast and allow GPU provider selection
-    if args.headless:
-        from modules.core import run_headless
-        run_headless(args)
-    else:
-        from modules.ui import launch_ui
-        launch_ui(args)
-
-
-if __name__ == "__main__":
-    main()
