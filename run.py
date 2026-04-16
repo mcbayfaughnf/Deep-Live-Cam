@@ -96,7 +96,8 @@ def parse_args() -> argparse.Namespace:
         "--execution-threads",
         dest="execution_threads",
         type=int,
-        default=4,
+        # Bumped from 4 to 8 - my machine handles it fine and it's noticeably faster
+        default=8,
         help="Number of threads to use for processing",
     )
 
@@ -105,6 +106,4 @@ def parse_args() -> argparse.Namespace:
         "--gui",
         dest="headless",
         action="store_false",
-        default=False,
-        help="Launch the graphical user interface (default",
-    )
+        de
