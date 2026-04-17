@@ -41,5 +41,7 @@
     "Select Camera:": "Elegir cámara:",
     "All mappings cleared!": "¡Todos los mapeos fueron borrados!",
     "Mappings successfully submitted!": "¡Mapeos enviados con éxito!",
-    "Source x Target Mapper is already open.": "El mapeador de fuente x destino ya está abierto."
+    "Source x Target Mapper is already open.": "El mapeador de fuente x destino ya está abierto.",
+    "No target selected": "No se ha seleccionado ningún destino",
+    "No source selected": "No se ha seleccionado ninguna fuente"
 }
